@@ -45,7 +45,10 @@
         CGRect resultRect;
         resultRect.size=getAdjustSizeWith_text_width_font(self.placeholder, rect.size.width-self.placeholderLeft-5, self.placeholderFont);
         resultRect.origin=CGPointMake(5, (rect.size.height-resultRect.size.height)*0.5);
-        [self.placeholder drawInRect:resultRect withAttributes:@{NSForegroundColorAttributeName:self.placeholderColor,NSFontAttributeName:self.placeholderFont}];
+        NSMutableDictionary *dict=[NSMutableDictionary new];
+        dict[NSForegroundColorAttributeName]=self.placeholderColor;
+        dict[NSFontAttributeName]=self.placeholderFont;
+        [self.placeholder drawInRect:resultRect withAttributes:dict];
     }
 }
 -(void)setPlaceholderFont:(UIFont *)placeholderFont
